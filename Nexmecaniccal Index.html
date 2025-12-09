@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Vendas</title>
+    <style>
+        /* Estilos CSS (Baseado no visual do Dark Mode) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Fundo escuro */
+            color: #e0e0e0; /* Texto claro */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1e1e1e; /* Container mais claro */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #bb86fc; /* Cor de destaque (similar ao Vercel/tema escuro) */
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+            font-weight: bold;
+        }
+
+        .total-row td {
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #6200ee; /* Cor de ação (roxo) */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2em;
+            line-height: 1; /* Para o botão '+' */
+            width: 40px; /* Largura fixa */
+            height: 40px; /* Altura fixa */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+        }
+
+        /* Estilo para a seção de lista */
+        .list-section {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Vendas</h1>
+        <p class="subtitle">Calculadora simples de produtos automotivos.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>PRODUTO</th>
+                    <th>VENDA</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <tr data-price="500">
+                    <td>Pneu</td>
+                    <td>500</td>
+                    <td><button onclick="addToTotal(500)">+</button></td>
+                </tr>
+                <tr data-price="1100">
+                    <td>Chave</td>
+                    <td>1100</td>
+                    <td><button onclick="addToTotal(1100)">+</button></td>
+                </tr>
+                <tr data-price="800">
+                    <td>Kit de reparo</td>
+                    <td>800</td>
+                    <td><button onclick="addToTotal(800)">+</button></td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2">Val. Total da Venda</td>
+                    <td id="total-value">0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="list-section">
+            Lista de produtos
+        </div>
+    </div>
+
+    <script>
+        // Variável para armazenar o valor total da venda
+        let total = 0;
+        const totalValueElement = document.getElementById('total-value');
+
+        /**
+         * Adiciona o preço do item ao total e atualiza o display.
+         * @param {number} price - O preço do item clicado.
+         */
+        function addToTotal(price) {
+            total += price;
+            // Atualiza o texto com o novo total
+            totalValueElement.textContent = total;
+        }
+    </script>
+</body>
+</html>
